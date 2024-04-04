@@ -1,19 +1,19 @@
-# AG E-Commerce APIs
+# Afuom-APIs
 
-AG E-Commerce APIs is an e-commerce platform tailored for agricultural products. It provides a set of APIs for managing products, orders, carts, authentication, and more. This documentation will guide you through the installation process, API endpoints, authentication, and usage.
+Afuom-APIs is an e-commerce platform tailored for agricultural products. It provides a set of APIs for managing products, orders, carts, authentication, and more. This documentation will guide you through the installation process, API endpoints, authentication, and usage.
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/YounoussaBen/Ag-Ecom-APIs.git
+   git clone https://github.com/YounoussaBen/Afuom-APIs.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd Ag-Ecom-APIs
+   cd Afuom-APIs
    ```
 
 3. Install dependencies from `requirements.txt`:
