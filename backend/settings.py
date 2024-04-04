@@ -53,11 +53,18 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'drf_yasg',
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",  
+    "allauth.socialaccount.providers.google",
     "api",
     "authentication",
     "shop",
     "wishlist",
+    "cart",
+    "order",
 ]
 
 MIDDLEWARE = [
@@ -159,5 +166,23 @@ CORS_ALLOWS_CREDENTIALS = True
 SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
         "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"},
+    },
+}
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "APP": {
+            "client_id": os.getenv("GOOGLE_CLIENT_ID"), # replace me
+            "secret": os.getenv("GOOGLE_SECRET"),       # replace me
+            "key": "",                               # leave empty
+        },
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+        "VERIFIED_EMAIL": True,
     },
 }
