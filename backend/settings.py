@@ -29,12 +29,14 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+
     ),
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 50,
+    # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    # "PAGE_SIZE": 50,
 }
 
 SIMPLE_JWT = {
@@ -51,20 +53,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django_extensions',
     'drf_yasg',
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",  
-    "allauth.socialaccount.providers.google",
     "api",
     "authentication",
     "shop",
     "wishlist",
     "cart",
     "order",
+    "search_engine",
 ]
 
 MIDDLEWARE = [
@@ -166,23 +166,5 @@ CORS_ALLOWS_CREDENTIALS = True
 SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
         "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"},
-    },
-}
-
-SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        "APP": {
-            "client_id": os.getenv("GOOGLE_CLIENT_ID"), # replace me
-            "secret": os.getenv("GOOGLE_SECRET"),       # replace me
-            "key": "",                               # leave empty
-        },
-        "SCOPE": [
-            "profile",
-            "email",
-        ],
-        "AUTH_PARAMS": {
-            "access_type": "online",
-        },
-        "VERIFIED_EMAIL": True,
     },
 }
