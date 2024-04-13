@@ -1,7 +1,8 @@
 from rest_framework import generics, permissions
 from .models import Category, Product
 from .serializers import CategorySerializer, ProductSerializer
-
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 class CategoryListCreateView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
